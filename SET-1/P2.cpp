@@ -2,6 +2,16 @@
 
 using namespace std;
 
+int find_score(vector<int> &a, vector<int> &b) {
+  int score = 0;
+  for (int i = 0; i < (int)a.size(); ++i) {
+    if (a[i] != b[i]) {
+      ++score;
+    }
+  }
+  return score;
+}
+
 void solve() {
   int n;
   cin >> n;
@@ -10,22 +20,24 @@ void solve() {
     cin >> arr[i];
   }
 
-  int max_score = 0;
-  scores.push_back(0);
-  for (int i = 1; i < n; ++i) {
-    int score = 0;
-    for (int j = 0; j < n; ++j) {
-      if (arr[j] != arr[(i + j) % n]){
-        ++score;
-      }
+  set<vector<int>> all_vec;
+  for (int delta = 1; delta <= n; ++delta) {
+    vector<int> a;
+    for (int i = 0; i < n; ++i) {
+      a.push_back(arr[(i + delta) % n]);
     }
-    max_score = max(score, max_score);
-    scores.push_back(score);
+    all_vec.insert(a);
   }
 
   int ans = 0;
-  for (auto sc : scores) {
-    if (sc == max_score) {
+  int max_score = 0;
+  for (auto el : all_vec) {
+    int score = find_score(arr, el);
+    if (score > max_score) {
+      max_score = score;
+      ans = 0;
+    }
+    if (score == max_score) {
       ++ans;
     }
   }
