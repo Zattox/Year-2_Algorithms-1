@@ -3,6 +3,30 @@
 using namespace std;
 
 void solve() {
+  int n;
+  cin >> n;
+
+  deque<int> start, middle;
+  char command;
+  for (int i = 0; i < n; ++i) {
+    cin >> command;
+    if (command == '-') {
+      cout << start.front() << "\n";
+      start.pop_front();
+    } else if (command == '+') {
+      int number;
+      cin >> number;
+      middle.push_back(number);
+    } else {
+      int number;
+      cin >> number;
+      middle.push_front(number);
+    }
+    if (start.size() < middle.size()) {
+      start.push_back(middle.front());
+      middle.pop_front();
+    }
+  }
 
 }
 
