@@ -78,12 +78,13 @@ void List::push_front(int value) {
 }
 
 void List::insert(Node* pos, int value) {
-  if (pos == nullptr || pos->value > size() || pos->value < 0) {
+  if (pos == nullptr) {
     throw std::runtime_error("Incorrect position!");
   }
-  int i = 0;
+
+  int i = 1;
   auto cur = head;
-  while (cur != tail && i < pos->value) {
+  while (cur != tail && cur != pos) {
     cur = cur->next;
     ++i;
   }
@@ -167,9 +168,10 @@ void List::reverse() {
   if (head == nullptr || head->next == nullptr) {
     return;
   }
+  std::swap(head, tail);
 
   Node* prev = nullptr;
-  Node* cur = head;
+  Node* cur = tail;
   while (cur != nullptr) {
     prev = cur->prev;
     cur->prev = cur->next;
