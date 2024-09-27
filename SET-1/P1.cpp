@@ -184,9 +184,8 @@ void List::reverse() {
 void List::remove_duplicates() {
   std::unordered_set<int> st;
   Node* cur = head;
-
   while (cur != nullptr) {
-    if (!st.count(cur->value)){
+    if (st.find(cur->value) == st.end()){
       st.insert(cur->value);
       cur = cur->next;
     } else {
@@ -197,7 +196,10 @@ void List::remove_duplicates() {
         cur->next->prev = cur->prev;
       }
       Node* tmp = cur;
-      cur = tmp->next;
+      if (tmp == tail) {
+        tail = cur->prev;
+      }
+      cur = cur->next;
       delete tmp;
       --_size;
     }

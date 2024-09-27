@@ -15,16 +15,11 @@ void print_list(List l) {
 }
 
 int main() {
-  List x;
-  x.push_back(2);
-  print_list(x);
+  List a({122, 101, 2212, 122, 122});
+  print_list(a);
 
-  List y(x);
-  y.replace(2, 4);
-  print_list(y);
-
-
-  vector<int> asttt({12, 1, 1, 21});
-  List z(asttt);
-  print_list(z);
+  a.remove_duplicates();
+  print_list(a);
+  a.reverse();
+  print_list(a);
 }
