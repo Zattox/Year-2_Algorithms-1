@@ -218,10 +218,8 @@ void List::replace(int old_value, int new_value) {
 
 void List::merge(const List& other) {
   Node* ptr_other = other.head;
-  Node* cur = tail;
   while (ptr_other != nullptr) {
-    cur->next = ptr_other;
-    cur = cur->next;
+    push_back(ptr_other->value);
     ptr_other = ptr_other->next;
   }
 }

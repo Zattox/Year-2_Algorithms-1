@@ -15,11 +15,10 @@ void print_list(List l) {
 }
 
 int main() {
-  List a({122, 101, 2212, 122, 122});
+  List a({1, 2, 3, 4, 5});
+  List b({11, 22, 33, 44, 55});
   print_list(a);
 
-  a.remove_duplicates();
-  print_list(a);
-  a.reverse();
+  a.merge(b);
   print_list(a);
 }
