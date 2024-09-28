@@ -249,20 +249,17 @@ bool List::empty() const {
 }
 
 void List::copy(const List& other) {
-  Node* cur = head;
-  Node* other_cur = other.head;
-  while (other_cur != nullptr) {
-    cur->value = other_cur->value;
-    if (cur->next == nullptr && other_cur->next != nullptr) {
-      cur->next = new Node(other_cur->next->value);
-      cur->next->prev = cur;
-    }
-    cur = cur->next;
-    other_cur = other_cur->next;
-  }
+  clear();
+  _size = other._size;
+  head = new Node(other.head->value);
+  Node* cur = other.head->next;
+  Node* prev = head;
+  tail = head;
   while (cur != nullptr) {
-    Node *tmp = cur;
+    tail = new Node(cur->value);
+    tail->prev = prev;
+    prev->next = tail;
     cur = cur->next;
-    delete tmp;
+    prev = tail;
   }
 }
