@@ -158,8 +158,8 @@ void List::erase(Node* pos) {
 }
 
 void List::clear() {
-  while (head != nullptr) {
-    pop_front();
+  while (_size > 0) {
+    pop_back();
   }
   tail = nullptr;
 }
@@ -230,6 +230,7 @@ bool List::check_cycle() const {
   Node* cur = head;
   while (cur != nullptr) {
     if (st.find(cur) != st.end()) {
+      st.clear();
       return true;
     }
     st.insert(cur);

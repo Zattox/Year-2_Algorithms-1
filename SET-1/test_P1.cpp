@@ -16,9 +16,15 @@ void print_list(List l) {
 
 int main() {
   List a({1, 2, 3, 4, 5});
-  List b({11, 22, 33, 44, 55});
-  print_list(a);
+  List b;
 
-  a.merge(b);
-  print_list(a);
+  b.head = new Node(0);
+  b.head->next = new Node(1);
+  b.head->next->prev = b.head;
+  b.head->next->next = b.head;
+  b.tail = b.head->next;
+  b._size = 2;
+
+  cout << b.check_cycle();
+
 }
