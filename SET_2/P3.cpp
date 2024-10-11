@@ -3,75 +3,115 @@
 using namespace std;
 typedef long long ll;
 
-vector<vector<ll>> a, b;
+class Matrix {
+ public:
+  int size = 0;
+  ll** data;
 
-void find_part_result(vector<vector<ll>> &matrix, vector<vector<ll>> &&part_a, vector<vector<ll>> &&part_b, int start_i, int start_j) {
-  int delta = matrix.size() / 2;
-  for (int i = start_i; i < start_i + delta; ++i) {
-    for (int j = start_j; j < start_j + delta; ++j) {
-      matrix[i][j] = part_a[i - start_i][j - start_j] + part_b[i - start_i][j - start_j];
+  Matrix(int size_) {
+    size = size_;
+    data = {new ll*[size_]{}};
+    for (unsigned i{}; i < size_; ++i) {
+      data[i] = new ll[size_]{};
     }
   }
-}
 
-vector<vector<ll>> mul_matrix(int si_a, int sj_a, int si_b, int sj_b, int n) {
-  vector<vector<ll>> res(n, vector<ll>(n));
-
-  if (n <= 256) {
+  friend const Matrix operator+(Matrix left, const Matrix &right) {
+    int n = left.size;
+    Matrix result(n);
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
-        for (int k = 0; k < n; ++k) {
-          res[i][j] += a[si_a + i][sj_a + k] * b[si_b + k][sj_b + j];
+        result.data[i][j] = left.data[i][j] + right.data[i][j];
+      }
+    }
+    return result;
+  }
+
+  friend const Matrix operator-(Matrix left, const Matrix &right) {
+    int n = left.size;
+    Matrix result(n);
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+        result.data[i][j] = left.data[i][j] - right.data[i][j];
+      }
+    }
+    return result;
+  }
+
+  friend const Matrix operator*(Matrix left, const Matrix &right) {
+    int n = left.size;
+    Matrix result(n);
+    if (n <= 128) {
+      for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+          for (int k = 0; k < n; ++k) {
+            result.data[i][j] += left.data[i][k] * right.data[k][j];
+          }
+        }
+      }
+    } else {
+      int m = n / 2;
+      Matrix a11(m), a12(m), a21(m), a22(m);
+      Matrix b11(m), b12(m), b21(m), b22(m);
+      for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < m; ++j) {
+          a11.data[i][j] = left.data[i][j];
+          a12.data[i][j] = left.data[i][j + m];
+          a21.data[i][j] = left.data[m + i][j];
+          a22.data[i][j] = left.data[i + m][j + m];
+          b11.data[i][j] = right.data[i][j];
+          b12.data[i][j] = right.data[i][j + m];
+          b21.data[i][j] = right.data[m + i][j];
+          b22.data[i][j] = right.data[i + m][j + m];
+        }
+      }
+
+      Matrix p1 = a11 * (b12 - b22);
+      Matrix p2 = (a11 + a12) * b22;
+      Matrix p3 = (a21 + a22) * b11;
+      Matrix p4 = a22 * (b21 - b11);
+      Matrix p5 = (a11 + a22) * (b11 + b22);
+      Matrix p6 = (a12 - a22) * (b21 + b22);
+      Matrix p7 = (a11 - a21) * (b11 + b12);
+
+      Matrix c11 = p5 + p4 + p6 - p2;
+      Matrix c12 = p1 + p2;
+      Matrix c21 = p3 + p4;
+      Matrix c22 = p5 + p1 - p3 - p7;
+
+      for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < m; ++j) {
+          result.data[i][j] = c11.data[i][j];
+          result.data[i][j + m] = c12.data[i][j];
+          result.data[m + i][j] = c21.data[i][j];
+          result.data[i + m][j + m] = c22.data[i][j];
         }
       }
     }
-  } else {
-    int m = n / 2;
-
-    find_part_result(res,
-                     mul_matrix(si_a + 0, sj_a + 0, si_b + 0, sj_b + 0, m),
-                     mul_matrix(si_a + 0, sj_a + m, si_b + m, sj_b + 0, m),
-                     0, 0);
-
-    find_part_result(res,
-                     mul_matrix(si_a + 0, sj_a + 0, si_b + 0, sj_b + m, m),
-                     mul_matrix(si_a + 0, sj_a + m, si_b + m, sj_b + m, m),
-                     0, m);
-
-    find_part_result(res,
-                     mul_matrix(si_a + m, sj_a + 0, si_b + 0, sj_b + 0, m),
-                     mul_matrix(si_a + m, sj_a + m, si_b + m, sj_b + 0, m),
-                     m, 0);
-
-    find_part_result(res,
-                     mul_matrix(si_a + m, sj_a + 0, si_b + 0, sj_b + m, m),
-                     mul_matrix(si_a + m, sj_a + m, si_b + m, sj_b + m, m),
-                     m, m);
+    return result;
   }
-
-  return res;
-}
+};
 
 void solve() {
   int n;
   cin >> n;
-  a.resize(n, vector<ll>(n));
-  b.resize(n, vector<ll>(n));
+
+  Matrix A(n), B(n);
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
-      cin >> a[i][j];
+      cin >> A.data[i][j];
     }
   }
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
-      cin >> b[i][j];
+      cin >> B.data[i][j];
     }
   }
 
-  vector<vector<ll>> c = mul_matrix(0, 0, 0, 0, n);
+  Matrix c = A * B;
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
-      cout << c[i][j] << ' ';
+      cout << c.data[i][j] << ' ';
     }
     cout << '\n';
   }
