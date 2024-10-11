@@ -17,8 +17,14 @@ void find_part_result(vector<vector<ll>> &matrix, vector<vector<ll>> &&part_a, v
 vector<vector<ll>> mul_matrix(int si_a, int sj_a, int si_b, int sj_b, int n) {
   vector<vector<ll>> res(n, vector<ll>(n));
 
-  if (n == 1) {
-    res[0][0] = a[si_a][sj_a] * b[si_b][sj_b];
+  if (n <= 256) {
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+        for (int k = 0; k < n; ++k) {
+          res[i][j] += a[si_a + i][sj_a + k] * b[si_b + k][sj_b + j];
+        }
+      }
+    }
   } else {
     int m = n / 2;
 
