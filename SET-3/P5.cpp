@@ -29,41 +29,34 @@ void str_to_matrix(vector<vector<int>> &a, int n) {
   }
 }
 
-const ll MAGIC = chrono::high_resolution_clock::now().time_since_epoch().count();
-mt19937_64 good_rand(13);
-
-vector<vector<int>> create_random_vector(int n) {
-  vector<vector<int>> vec(n, vector<int>(1));
+vector<int> create_random_vector(int n) {
+  random_device rand_dev;
+  mt19937 generator(rand_dev());
+  uniform_int_distribution<> distr(0,1);
+  vector<int> vec(n);
   for (int i = 0; i < n; ++i) {
-    vec[i][0] = good_rand() % 2;
+    vec[i] = distr(generator);
   }
   return vec;
 }
 
-vector<vector<int>> special_mul(vector<vector<int>> &mat, vector<vector<int>> &r){
+vector<int> special_mul(vector<vector<int>> &mat, vector<int> &r){
   int n = r.size();
-  vector<vector<int>> ans(n, vector<int>(1));
+  vector<int> ans(n);
   for (int i = 0; i < n; ++i) {
-    if (r[i][0] == 1) {
-      for (int j = 0; j < n; ++j) {
-        ans[j][0] += mat[j][i];
-      }
+    for (int j = 0; j < n; ++j) {
+      ans[i] = (ans[i] + mat[i][j] * r[j]) % 2;
     }
   }
   return ans;
 }
 
 bool check_mul(vector<vector<int>> &a, vector<vector<int>> &b, vector<vector<int>> &c, int n) {
-  vector<vector<int>> r = create_random_vector(n);
-  auto X = special_mul(b, r);
-  X = special_mul(a, X);
+  vector<int> r = create_random_vector(n);
+  auto Br = special_mul(b, r);
+  auto X = special_mul(a, Br);
   auto Y = special_mul(c, r);
-  for (int i = 0; i < n; ++i) {
-    if (X[i][0] != Y[i][0]) {
-      return false;
-    }
-  }
-  return true;
+  return (X == Y);
 }
 
 void solve() {
@@ -75,20 +68,14 @@ void solve() {
   str_to_matrix(b, n);
   str_to_matrix(c, n);
 
-  int good = 0, bad = 0;
-  for (int i = 0; i < 100; ++i) {
-    if (check_mul(a, b, c, n)) {
-      ++good;
-    } else {
-      ++bad;
+  for (int i = 0; i < 20; ++i) {
+    if (!check_mul(a, b, c, n)) {
+      cout << "NO\n";
+      return;
     }
   }
 
-  if (good > bad) {
-    cout << "YES\n";
-  } else {
-    cout << "NO\n";
-  }
+  cout << "YES\n";
 }
 
 int main() {
