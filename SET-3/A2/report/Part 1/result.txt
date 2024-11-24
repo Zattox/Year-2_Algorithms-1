@@ -1,0 +1,384 @@
+N = 500
+Time for MergeSort:  4224.0000000000
+Time for MergeSortHybrid:  84.0000000000
+===============================
+N = 600
+Time for MergeSort:  218.0000000000
+Time for MergeSortHybrid:  108.0000000000
+===============================
+N = 700
+Time for MergeSort:  265.0000000000
+Time for MergeSortHybrid:  126.0000000000
+===============================
+N = 800
+Time for MergeSort:  319.0000000000
+Time for MergeSortHybrid:  148.0000000000
+===============================
+N = 900
+Time for MergeSort:  357.0000000000
+Time for MergeSortHybrid:  161.0000000000
+===============================
+N = 1000
+Time for MergeSort:  402.0000000000
+Time for MergeSortHybrid:  180.0000000000
+===============================
+N = 1100
+Time for MergeSort:  454.0000000000
+Time for MergeSortHybrid:  218.0000000000
+===============================
+N = 1200
+Time for MergeSort:  500.0000000000
+Time for MergeSortHybrid:  243.0000000000
+===============================
+N = 1300
+Time for MergeSort:  544.0000000000
+Time for MergeSortHybrid:  263.0000000000
+===============================
+N = 1400
+Time for MergeSort:  585.0000000000
+Time for MergeSortHybrid:  276.0000000000
+===============================
+N = 1500
+Time for MergeSort:  640.0000000000
+Time for MergeSortHybrid:  299.0000000000
+===============================
+N = 1600
+Time for MergeSort:  685.0000000000
+Time for MergeSortHybrid:  310.0000000000
+===============================
+N = 1700
+Time for MergeSort:  751.0000000000
+Time for MergeSortHybrid:  333.0000000000
+===============================
+N = 1800
+Time for MergeSort:  804.0000000000
+Time for MergeSortHybrid:  354.0000000000
+===============================
+N = 1900
+Time for MergeSort:  833.0000000000
+Time for MergeSortHybrid:  376.0000000000
+===============================
+N = 2000
+Time for MergeSort:  876.0000000000
+Time for MergeSortHybrid:  395.0000000000
+===============================
+N = 2100
+Time for MergeSort:  929.0000000000
+Time for MergeSortHybrid:  423.0000000000
+===============================
+N = 2200
+Time for MergeSort:  968.0000000000
+Time for MergeSortHybrid:  489.0000000000
+===============================
+N = 2300
+Time for MergeSort:  1055.0000000000
+Time for MergeSortHybrid:  498.0000000000
+===============================
+N = 2400
+Time for MergeSort:  1077.0000000000
+Time for MergeSortHybrid:  526.0000000000
+===============================
+N = 2500
+Time for MergeSort:  1133.0000000000
+Time for MergeSortHybrid:  548.0000000000
+===============================
+N = 2600
+Time for MergeSort:  1178.0000000000
+Time for MergeSortHybrid:  559.0000000000
+===============================
+N = 2700
+Time for MergeSort:  1250.0000000000
+Time for MergeSortHybrid:  592.0000000000
+===============================
+N = 2800
+Time for MergeSort:  1448.0000000000
+Time for MergeSortHybrid:  594.0000000000
+===============================
+N = 2900
+Time for MergeSort:  1432.0000000000
+Time for MergeSortHybrid:  628.0000000000
+===============================
+N = 3000
+Time for MergeSort:  1394.0000000000
+Time for MergeSortHybrid:  647.0000000000
+===============================
+N = 3100
+Time for MergeSort:  1439.0000000000
+Time for MergeSortHybrid:  660.0000000000
+===============================
+N = 3200
+Time for MergeSort:  1535.0000000000
+Time for MergeSortHybrid:  681.0000000000
+===============================
+N = 3300
+Time for MergeSort:  1572.0000000000
+Time for MergeSortHybrid:  730.0000000000
+===============================
+N = 3400
+Time for MergeSort:  1609.0000000000
+Time for MergeSortHybrid:  733.0000000000
+===============================
+N = 3500
+Time for MergeSort:  1652.0000000000
+Time for MergeSortHybrid:  757.0000000000
+===============================
+N = 3600
+Time for MergeSort:  1741.0000000000
+Time for MergeSortHybrid:  772.0000000000
+===============================
+N = 3700
+Time for MergeSort:  1874.0000000000
+Time for MergeSortHybrid:  787.0000000000
+===============================
+N = 3800
+Time for MergeSort:  1799.0000000000
+Time for MergeSortHybrid:  810.0000000000
+===============================
+N = 3900
+Time for MergeSort:  1848.0000000000
+Time for MergeSortHybrid:  951.0000000000
+===============================
+N = 4000
+Time for MergeSort:  1922.0000000000
+Time for MergeSortHybrid:  864.0000000000
+===============================
+N = 4100
+Time for MergeSort:  1950.0000000000
+Time for MergeSortHybrid:  876.0000000000
+===============================
+N = 4200
+Time for MergeSort:  2083.0000000000
+Time for MergeSortHybrid:  933.0000000000
+===============================
+N = 4300
+Time for MergeSort:  2031.0000000000
+Time for MergeSortHybrid:  998.0000000000
+===============================
+N = 4400
+Time for MergeSort:  2147.0000000000
+Time for MergeSortHybrid:  1074.0000000000
+===============================
+N = 4500
+Time for MergeSort:  2174.0000000000
+Time for MergeSortHybrid:  1066.0000000000
+===============================
+N = 4600
+Time for MergeSort:  2199.0000000000
+Time for MergeSortHybrid:  1067.0000000000
+===============================
+N = 4700
+Time for MergeSort:  2299.0000000000
+Time for MergeSortHybrid:  1103.0000000000
+===============================
+N = 4800
+Time for MergeSort:  2298.0000000000
+Time for MergeSortHybrid:  1135.0000000000
+===============================
+N = 4900
+Time for MergeSort:  2362.0000000000
+Time for MergeSortHybrid:  1156.0000000000
+===============================
+N = 5000
+Time for MergeSort:  2442.0000000000
+Time for MergeSortHybrid:  1180.0000000000
+===============================
+N = 5100
+Time for MergeSort:  2442.0000000000
+Time for MergeSortHybrid:  1192.0000000000
+===============================
+N = 5200
+Time for MergeSort:  2508.0000000000
+Time for MergeSortHybrid:  1211.0000000000
+===============================
+N = 5300
+Time for MergeSort:  2558.0000000000
+Time for MergeSortHybrid:  1241.0000000000
+===============================
+N = 5400
+Time for MergeSort:  2680.0000000000
+Time for MergeSortHybrid:  1252.0000000000
+===============================
+N = 5500
+Time for MergeSort:  2690.0000000000
+Time for MergeSortHybrid:  1283.0000000000
+===============================
+N = 5600
+Time for MergeSort:  2758.0000000000
+Time for MergeSortHybrid:  1311.0000000000
+===============================
+N = 5700
+Time for MergeSort:  2771.0000000000
+Time for MergeSortHybrid:  1359.0000000000
+===============================
+N = 5800
+Time for MergeSort:  2896.0000000000
+Time for MergeSortHybrid:  1362.0000000000
+===============================
+N = 5900
+Time for MergeSort:  2948.0000000000
+Time for MergeSortHybrid:  1381.0000000000
+===============================
+N = 6000
+Time for MergeSort:  2922.0000000000
+Time for MergeSortHybrid:  1393.0000000000
+===============================
+N = 6100
+Time for MergeSort:  3015.0000000000
+Time for MergeSortHybrid:  1410.0000000000
+===============================
+N = 6200
+Time for MergeSort:  3036.0000000000
+Time for MergeSortHybrid:  1468.0000000000
+===============================
+N = 6300
+Time for MergeSort:  3076.0000000000
+Time for MergeSortHybrid:  1474.0000000000
+===============================
+N = 6400
+Time for MergeSort:  3173.0000000000
+Time for MergeSortHybrid:  1486.0000000000
+===============================
+N = 6500
+Time for MergeSort:  3217.0000000000
+Time for MergeSortHybrid:  1518.0000000000
+===============================
+N = 6600
+Time for MergeSort:  3283.0000000000
+Time for MergeSortHybrid:  1537.0000000000
+===============================
+N = 6700
+Time for MergeSort:  3338.0000000000
+Time for MergeSortHybrid:  1550.0000000000
+===============================
+N = 6800
+Time for MergeSort:  3448.0000000000
+Time for MergeSortHybrid:  1587.0000000000
+===============================
+N = 6900
+Time for MergeSort:  3421.0000000000
+Time for MergeSortHybrid:  1622.0000000000
+===============================
+N = 7000
+Time for MergeSort:  3499.0000000000
+Time for MergeSortHybrid:  1639.0000000000
+===============================
+N = 7100
+Time for MergeSort:  3495.0000000000
+Time for MergeSortHybrid:  1652.0000000000
+===============================
+N = 7200
+Time for MergeSort:  3558.0000000000
+Time for MergeSortHybrid:  1664.0000000000
+===============================
+N = 7300
+Time for MergeSort:  3667.0000000000
+Time for MergeSortHybrid:  1695.0000000000
+===============================
+N = 7400
+Time for MergeSort:  3684.0000000000
+Time for MergeSortHybrid:  1715.0000000000
+===============================
+N = 7500
+Time for MergeSort:  3814.0000000000
+Time for MergeSortHybrid:  1742.0000000000
+===============================
+N = 7600
+Time for MergeSort:  3748.0000000000
+Time for MergeSortHybrid:  1759.0000000000
+===============================
+N = 7700
+Time for MergeSort:  3791.0000000000
+Time for MergeSortHybrid:  1784.0000000000
+===============================
+N = 7800
+Time for MergeSort:  3879.0000000000
+Time for MergeSortHybrid:  1814.0000000000
+===============================
+N = 7900
+Time for MergeSort:  3935.0000000000
+Time for MergeSortHybrid:  1844.0000000000
+===============================
+N = 8000
+Time for MergeSort:  3989.0000000000
+Time for MergeSortHybrid:  1854.0000000000
+===============================
+N = 8100
+Time for MergeSort:  3985.0000000000
+Time for MergeSortHybrid:  1878.0000000000
+===============================
+N = 8200
+Time for MergeSort:  4010.0000000000
+Time for MergeSortHybrid:  1919.0000000000
+===============================
+N = 8300
+Time for MergeSort:  4141.0000000000
+Time for MergeSortHybrid:  1975.0000000000
+===============================
+N = 8400
+Time for MergeSort:  4166.0000000000
+Time for MergeSortHybrid:  2029.0000000000
+===============================
+N = 8500
+Time for MergeSort:  4234.0000000000
+Time for MergeSortHybrid:  2095.0000000000
+===============================
+N = 8600
+Time for MergeSort:  4270.0000000000
+Time for MergeSortHybrid:  2143.0000000000
+===============================
+N = 8700
+Time for MergeSort:  4339.0000000000
+Time for MergeSortHybrid:  2202.0000000000
+===============================
+N = 8800
+Time for MergeSort:  4445.0000000000
+Time for MergeSortHybrid:  2238.0000000000
+===============================
+N = 8900
+Time for MergeSort:  4455.0000000000
+Time for MergeSortHybrid:  2282.0000000000
+===============================
+N = 9000
+Time for MergeSort:  4521.0000000000
+Time for MergeSortHybrid:  2302.0000000000
+===============================
+N = 9100
+Time for MergeSort:  4530.0000000000
+Time for MergeSortHybrid:  2306.0000000000
+===============================
+N = 9200
+Time for MergeSort:  4585.0000000000
+Time for MergeSortHybrid:  2321.0000000000
+===============================
+N = 9300
+Time for MergeSort:  4629.0000000000
+Time for MergeSortHybrid:  2358.0000000000
+===============================
+N = 9400
+Time for MergeSort:  4675.0000000000
+Time for MergeSortHybrid:  2375.0000000000
+===============================
+N = 9500
+Time for MergeSort:  4887.0000000000
+Time for MergeSortHybrid:  2413.0000000000
+===============================
+N = 9600
+Time for MergeSort:  4762.0000000000
+Time for MergeSortHybrid:  2445.0000000000
+===============================
+N = 9700
+Time for MergeSort:  4959.0000000000
+Time for MergeSortHybrid:  2447.0000000000
+===============================
+N = 9800
+Time for MergeSort:  4960.0000000000
+Time for MergeSortHybrid:  2486.0000000000
+===============================
+N = 9900
+Time for MergeSort:  5023.0000000000
+Time for MergeSortHybrid:  2518.0000000000
+===============================
+N = 10000
+Time for MergeSort:  5056.0000000000
+Time for MergeSortHybrid:  2537.0000000000
+===============================
