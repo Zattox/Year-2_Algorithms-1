@@ -7,7 +7,7 @@ void insertionSort(vector<int> &arr, int l, int r) {
     int elem = arr[i];
     int j = i - 1;
     while (j >= l && arr[j] > elem) {
-      arr[j + 1] = arr[j];
+      arr[j + 1] =  arr[j];
       j = j - 1;
     }
     arr[j + 1] = elem;
@@ -41,14 +41,14 @@ void merge(vector<int> &arr, int l, int m, int r) {
   }
 }
 
-void mergeSortHybrid(vector<int>& arr, int left, int right) {
-  if (right - left <= 15) {
-    insertionSort(arr, left, right);
+void mergeSortHybrid(vector<int> &arr, int l, int r) {
+  if (r - l <= 15) {
+    insertionSort(arr, l, r);
   } else {
-    int mid = left + (right - left) / 2;
-    mergeSortHybrid(arr, left, mid);
-    mergeSortHybrid(arr, mid + 1, right);
-    merge(arr, left, mid, right);
+    int m = (l + r) / 2;
+    mergeSortHybrid(arr, l, m);
+    mergeSortHybrid(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
 }
 
