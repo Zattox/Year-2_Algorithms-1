@@ -1,7 +1,9 @@
 #include "rbtree.h"
 #include <iostream>
 
-Node::Node(int value) : key(value), height(1), size(1), left(nullptr), right(nullptr), parent(nullptr), color(Color::RED) {
+Node::Node(int value) : key(value), height(1), size(1),
+                        left(nullptr), right(nullptr), parent(nullptr),
+                        color(Color::RED) {
 }
 
 RBTree::RBTree() : root(nullptr) {
@@ -29,27 +31,8 @@ int getNodeSize(Node* node) {
   return node ? node->size : 0;
 }
 
-void fixSize(Node* &node) {
-  if (node != nullptr) {
-    fixSize(node->left);
-    fixSize(node->right);
-    node->size = getNodeSize(node->left) + getNodeSize(node->right) + 1;
-  }
-}
-
 int getNodeHeight(Node* node) {
   return node ? node->height : 0;
-}
-
-void fixHeight(Node* node) {
-  if (node != nullptr) {
-    fixHeight(node->left);
-    fixHeight(node->right);
-    node->height = std::max(getNodeHeight(node->left), getNodeHeight(node->right));
-    if (node->color == Color::BLACK) {
-      ++node->height;
-    }
-  }
 }
 
 int* RBTree::find(int key) {
@@ -66,133 +49,134 @@ int* RBTree::find(int key) {
   return nullptr;
 }
 
-void leftRotate(Node*& node, Node*& root) {
-  Node* tmp_r = node->right;
-  if (tmp_r == nullptr) return; // Проверка на nullptr
+void fixNode(Node* node) {
+  if (node != nullptr) {
+    node->size = getNodeSize(node->left) + getNodeSize(node->right) + 1;
+    node->height = std::max(getNodeHeight(node->left), getNodeHeight(node->right));
+    if (node->color == Color::BLACK) {
+      ++node->height;
+    }
+  }
+}
 
-  node->right = tmp_r->left;
-  if (tmp_r->left != nullptr) {
-    tmp_r->left->parent = node;
-  }
-  tmp_r->parent = node->parent;
-  if (node->parent == nullptr) {
-    root = tmp_r; // Если node был корнем, обновляем корень
-  } else if (node == node->parent->left) {
-    node->parent->left = tmp_r;
-  } else {
-    node->parent->right = tmp_r;
-  }
-  tmp_r->left = node;
-  node->parent = tmp_r;
+void leftRotate(Node*& node, Node*& root) {
+  Node* child = node->right;
+  node->right = child->left;
+  if (node->right != nullptr)
+    node->right->parent = node;
+  child->parent = node->parent;
+  if (node->parent == nullptr)
+    root = child;
+  else if (node == node->parent->left)
+    node->parent->left = child;
+  else
+    node->parent->right = child;
+  child->left = node;
+  node->parent = child;
+
+  fixNode(node);
+  fixNode(child);
 }
 
 void rightRotate(Node*& node, Node*& root) {
-  Node* tmp_l = node->left;
-  if (tmp_l == nullptr) return; // Проверка на nullptr
+  Node* child = node->left;
+  node->left = child->right;
+  if (node->left != nullptr)
+    node->left->parent = node;
+  child->parent = node->parent;
+  if (node->parent == nullptr)
+    root = child;
+  else if (node == node->parent->left)
+    node->parent->left = child;
+  else
+    node->parent->right = child;
+  child->right = node;
+  node->parent = child;
 
-  node->left = tmp_l->right;
-  if (tmp_l->right != nullptr) {
-    tmp_l->right->parent = node;
-  }
-  tmp_l->parent = node->parent;
-  if (node->parent == nullptr) {
-    root = tmp_l; // Если node был корнем, обновляем корень
-  } else if (node == node->parent->right) {
-    node->parent->right = tmp_l;
-  } else {
-    node->parent->left = tmp_l;
-  }
-  tmp_l->right = node;
-  node->parent = tmp_l;
+  fixNode(node);
+  fixNode(child);
 }
 
 void fixInsert(Node* &node, Node*& root) {
-  while (node != nullptr && node->parent != nullptr && node->parent->color == Color::RED) {
-    Node* uncle = nullptr;
-    if (node->parent == node->parent->parent->left) {
-      uncle = node->parent->parent->right;
+  Node* parent = nullptr;
+  Node* grandparent = nullptr;
+  while (node != root && node->color == Color::RED && node->parent->color == Color::RED) {
+    parent = node->parent;
+    grandparent = parent->parent;
+    if (parent == grandparent->left) {
+      Node* uncle = grandparent->right;
       if (uncle != nullptr && uncle->color == Color::RED) {
-        // Случай 1: дядя красный
-        node->parent->color = Color::BLACK;
+        grandparent->color = Color::RED;
+        parent->color = Color::BLACK;
         uncle->color = Color::BLACK;
-        node->parent->parent->color = Color::RED;
-        node = node->parent->parent;
-      } else {
-        // Случай 2: дядя черный, текущий узел правый
-        if (node == node->parent->right) {
-          node = node->parent;
-          leftRotate(node, root);
-        }
-        // Случай 3: дядя черный, текущий узел левый
-        if (node->parent->parent != nullptr) { // Добавлена проверка на nullptr
-          node->parent->color = Color::BLACK;
-          node->parent->parent->color = Color::RED;
-          rightRotate(node->parent->parent, root);
-        }
+        node = grandparent;
       }
-    } else {
-      uncle = node->parent->parent->left;
+      else {
+        if (node == parent->right) {
+          leftRotate(parent, root);
+          node = parent;
+          parent = node->parent;
+        }
+        rightRotate(grandparent, root);
+        std::swap(parent->color, grandparent->color);
+        node = parent;
+      }
+    }
+    else {
+      Node* uncle = grandparent->left;
       if (uncle != nullptr && uncle->color == Color::RED) {
-        // Случай 1: дядя красный
-        node->parent->color = Color::BLACK;
+        grandparent->color = Color::RED;
+        parent->color = Color::BLACK;
         uncle->color = Color::BLACK;
-        node->parent->parent->color = Color::RED;
-        node = node->parent->parent;
-      } else {
-        // Случай 2: дядя черный, текущий узел левый
-        if (node == node->parent->left) {
-          node = node->parent;
-          rightRotate(node, root);
+        node = grandparent;
+      }
+      else {
+        if (node == parent->left) {
+          rightRotate(parent, root);
+          node = parent;
+          parent = node->parent;
         }
-        // Случай 3: дядя черный, текущий узел правый
-        if (node->parent->parent != nullptr) { // Добавлена проверка на nullptr
-          node->parent->color = Color::BLACK;
-          node->parent->parent->color = Color::RED;
-          leftRotate(node->parent->parent, root);
-        }
+        leftRotate(grandparent, root);
+        std::swap(parent->color, grandparent->color);
+        node = parent;
       }
     }
   }
-  if (root != nullptr) {
-    root->color = Color::BLACK; // Корень всегда черный
-  }
+  root->color = Color::BLACK;
 }
 
 void RBTree::insert(int key) {
   if (find(key) != nullptr) {
-    return; // Если ключ уже существует, ничего не делаем
+    return;
   }
   if (root == nullptr) {
     root = new Node(key);
-    root->color = Color::BLACK; // Корень черный
+    root->color = Color::BLACK;
     return;
   }
-
-  Node* cur = root;
-  Node* prev = nullptr;
-  while (cur != nullptr) {
-    prev = cur;
-    if (key < cur->key) {
-      cur = cur->left;
-    } else {
-      cur = cur->right;
-    }
+  Node* node = new Node(key);
+  Node* parent = nullptr;
+  Node* current = root;
+  while (current != nullptr) {
+    parent = current;
+    if (node->key < current->key)
+      current = current->left;
+    else
+      current = current->right;
   }
+  node->parent = parent;
+  if (node->key < parent->key)
+    parent->left = node;
+  else
+    parent->right = node;
 
-  Node* newNode = new Node(key);
-  newNode->parent = prev; // Устанавливаем родителя
-  if (key < prev->key) {
-    prev->left = newNode;
-  } else {
-    prev->right = newNode;
+  Node *tmp = node;
+  while (tmp != nullptr) {
+    fixNode(tmp);
+    tmp = tmp->parent;
   }
-
-  // Восстанавливаем свойства красно-черного дерева
-  fixInsert(newNode, root);
-  fixHeight(root);
-  fixSize(root);
+  fixInsert(node, root);
 }
-
 
 int* RBTree::lowerBound(int key) {
   Node* cur = root;
