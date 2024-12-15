@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "splay.cpp"
 
 typedef long long ll;
 typedef long double ld;
