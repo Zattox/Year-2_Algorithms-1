@@ -26,6 +26,7 @@ class BTree {
 
   int64_t sum() const;
 
+  void print();
 
  private:
   Node* root;
