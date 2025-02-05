@@ -5,13 +5,13 @@ typedef long long ll;
 
 const ll kBase = 1000000000;
 
-void RemoveLeadingZeros(vector<ll> &result){
+void RemoveLeadingZeros(vector<ll> &result) {
   while (result.size() > 1 && result.back() == 0) {
     result.pop_back();
   }
 }
 
-vector<ll> input_func(string &value){
+vector<ll> input_func(string &value) {
   vector<ll> digits;
   for (auto i = static_cast<int64_t>(value.size()); i > 0; i -= 9) {
     if (i < 9) {

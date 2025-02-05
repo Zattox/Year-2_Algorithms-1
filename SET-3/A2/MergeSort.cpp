@@ -21,10 +21,10 @@ void merge(vector<int> &arr, int l, int m, int r) {
     }
   }
 
-  while(i < sz_l) {
+  while (i < sz_l) {
     arr[cur++] = half_l[i++];
   }
-  while(j < sz_r) {
+  while (j < sz_r) {
     arr[cur++] = half_r[j++];
   }
 }

@@ -4,7 +4,7 @@ using namespace std;
 
 const int INF = 2e9;
 
-struct Node{
+struct Node {
   int key = -1;
   int left = -1, right = -1;
   char color = 'B';

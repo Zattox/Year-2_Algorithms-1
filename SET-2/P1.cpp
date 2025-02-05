@@ -13,7 +13,7 @@ struct Interval {
     return right - left + 1;
   }
 
-  Interval overlap(const Interval& other) {
+  Interval overlap(const Interval &other) {
     if (other.left > right || left > other.right) {
       return {1, 0};
     }

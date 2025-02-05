@@ -11,7 +11,7 @@ BTree::BTree(int t) : t_(t), size_(1) {
   root = new Node(t);
 }
 
-void clear(Node* node) {
+void clear(Node *node) {
   if (node != nullptr) {
     for (auto child : node->children) {
       clear(child);
@@ -24,9 +24,9 @@ BTree::~BTree() {
   clear(root);
 }
 
-void SplitChild(Node* &x, int i, int t) {
-  Node* y = x->children[i];
-  Node* z = new Node(t);
+void SplitChild(Node *&x, int i, int t) {
+  Node *y = x->children[i];
+  Node *z = new Node(t);
   z->isLeaf = y->isLeaf;
   z->parent = y->parent;
 
@@ -49,7 +49,7 @@ void SplitChild(Node* &x, int i, int t) {
   y->key.pop_back();
 }
 
-void InsertNonfull(Node* &x, int key, int t, int &cntOfSplit) {
+void InsertNonfull(Node *&x, int key, int t, int &cntOfSplit) {
   int i = x->key.size() - 1;
   if (x->isLeaf) {
     while (i >= 0 && key < x->key[i]) {
@@ -93,7 +93,7 @@ void BTree::insert(int key) {
   }
 
   if (root->key.size() == 2 * t_ - 1) {
-    Node* new_root = new Node(t_);
+    Node *new_root = new Node(t_);
     new_root->isLeaf = false;
     new_root->children.push_back(root);
     root->parent = new_root;
@@ -114,7 +114,7 @@ size_t BTree::size() const {
   return size_;
 }
 
-int64_t calc_sum(Node* node) {
+int64_t calc_sum(Node *node) {
   if (node->isLeaf) {
     int64_t sum = 0;
     for (auto key : node->key) {

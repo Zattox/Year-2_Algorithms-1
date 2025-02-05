@@ -6,11 +6,11 @@ struct Point {
   int x, y;
 };
 
-inline bool cmp_x (const Point &p1, const Point &p2) {
+inline bool cmp_x(const Point &p1, const Point &p2) {
   return p1.x < p2.x || p1.x == p2.x && p1.y < p2.y;
 }
 
-inline bool cmp_y (const Point &p1, const Point &p2) {
+inline bool cmp_y(const Point &p1, const Point &p2) {
   return p1.y < p2.y;
 }
 
@@ -103,7 +103,7 @@ void solve() {
   std::sort(arr.begin(), arr.end(), cmp_x);
 
   double ans = find_min_dist(arr, 0, arr.size());
-  cout << (int)ans;
+  cout << (int) ans;
 }
 
 int main() {

@@ -5,7 +5,7 @@ using namespace std;
 string unpacking(string &str, int &i) {
   string result;
   int count = 0;
-  while (i < (int)str.size()){
+  while (i < (int) str.size()) {
     if (isdigit(str[i])) {
       count = str[i] - '0';
     } else if (str[i] == '[') {

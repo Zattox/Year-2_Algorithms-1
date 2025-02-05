@@ -128,13 +128,13 @@ Node *AVLTree::rotateLeft(Node *node) {
 
 Node *AVLTree::balanceNode(Node *node) {
   balanceHeight(node);
-  if (balanceFactor(node) == 2){
+  if (balanceFactor(node) == 2) {
     if (balanceFactor(node->right) < 0) {
       node->right = rotateRight(node->right);
     }
     return rotateLeft(node);
   }
-  if (balanceFactor(node) == -2){
+  if (balanceFactor(node) == -2) {
     if (balanceFactor(node->left) > 0) {
       node->left = rotateLeft(node->left);
     }
@@ -156,7 +156,7 @@ Node *AVLTree::insertNode(Node *node, int value) {
 }
 
 Node *AVLTree::findMinNode(Node *node) {
-  if (node->left == nullptr){
+  if (node->left == nullptr) {
     return node;
   }
   return findMinNode(node->left);
@@ -176,7 +176,7 @@ Node *AVLTree::removeNode(Node *node, int value) {
   }
   if (value < node->value) {
     node->left = removeNode(node->left, value);
-  } else if (value > node->value){
+  } else if (value > node->value) {
     node->right = removeNode(node->right, value);
   } else {
     auto tmp_l = node->left;

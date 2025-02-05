@@ -13,7 +13,7 @@ pair<int, int> frac_to_pair(string x) {
   }
   ++i;
   string denominator;
-  while (i < x.size()){
+  while (i < x.size()) {
     denominator += x[i];
     ++i;
   }

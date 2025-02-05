@@ -6,11 +6,11 @@ typedef long long ll;
 class Matrix {
  public:
   int size = 0;
-  ll** data;
+  ll **data;
 
   Matrix(int size_) {
     size = size_;
-    data = {new ll*[size_]{}};
+    data = {new ll *[size_]{}};
     for (unsigned i{}; i < size_; ++i) {
       data[i] = new ll[size_]{};
     }

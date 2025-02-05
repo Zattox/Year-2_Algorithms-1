@@ -22,7 +22,7 @@ ld find_dist(vector<pair<ll, ll>> &arr, ld time) {
   return dist;
 }
 
-bool check(vector<pair<ll,ll>> &arr, ll len, ld time) {
+bool check(vector<pair<ll, ll>> &arr, ll len, ld time) {
   if (find_dist(arr, time) < len) {
     return false;
   }

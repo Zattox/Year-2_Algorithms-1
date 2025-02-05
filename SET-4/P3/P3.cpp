@@ -7,7 +7,7 @@ using namespace std;
 
 void solve() {
   AVLTree T;
-  for (int i = 0; i < 10; ++i)  {
+  for (int i = 0; i < 10; ++i) {
     cout << "Find " << i << " : " << T.find(i + 1) << "\n";
     T.insert(i + 1);
     cout << "Find " << i << " : " << T.find(i + 1) << "\n";
@@ -22,14 +22,13 @@ void solve() {
   cout << "\n";
 
   cout << T.empty() << "\n";
-  for (int i = 0; i < 11; ++i)  {
+  for (int i = 0; i < 11; ++i) {
     cout << "size = " << T.getSize() << " height = " << T.getHeight() << "\n";
     T.erase(i);
     cout << "size = " << T.getSize() << " height = " << T.getHeight() << "\n";
     cout << "============================================\n";
   }
   cout << T.empty() << "\n";
-
 
 }
 

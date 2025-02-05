@@ -42,7 +42,7 @@ class AVLTree {
   Node *root_;
   int size_;
 
-  int getNodeHeight(Node *node) ;
+  int getNodeHeight(Node *node);
 
   int balanceFactor(Node *node);
 

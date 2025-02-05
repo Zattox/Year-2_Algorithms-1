@@ -6,20 +6,20 @@ typedef struct Node {
   Node *left, *right;
   int value;
   int sz = 0;
-} * tree;
+} *tree;
 
-int GetSize(Node* T) {
+int GetSize(Node *T) {
   if (T == nullptr) {
     return 0;
   }
   return T->sz;
 }
 
-Node* NewNode(int x) {
-  return new Node{nullptr, nullptr, x,1 };
+Node *NewNode(int x) {
+  return new Node{nullptr, nullptr, x, 1};
 }
 
-void recalc(Node* T) {
+void recalc(Node *T) {
   if (T != nullptr) {
     T->sz = max(GetSize(T->left), GetSize(T->right)) + 1;
   }

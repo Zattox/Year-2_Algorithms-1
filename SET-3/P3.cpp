@@ -4,14 +4,14 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 
-int next_bit(pair<int, int> &num){
+int next_bit(pair<int, int> &num) {
   int bit = num.first % 2;
   num.first = (num.first >> 1);
   return bit;
 }
 
 vector<int> radixSort(vector<int> &a) {
-  int n = (int)a.size(), max_sz = 32;
+  int n = (int) a.size(), max_sz = 32;
   int cnt_negative = 0;
   vector<pair<int, int>> arr(n);
   for (int i = 0; i < n; ++i) {

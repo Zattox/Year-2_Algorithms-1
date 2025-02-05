@@ -3,7 +3,7 @@
 typedef long long ll;
 using namespace std;
 
-int count_queens(vector<int>& arr) {
+int count_queens(vector<int> &arr) {
   size_t n = arr.size();
   vector<bool> diag_sum(2 * n - 1), diag_diff(2 * n - 1);
   int cnt = 0;
@@ -34,7 +34,7 @@ void solve() {
 
   double Ti = 1.0;
   int cur_cnt = count_queens(spots);
-  while(cur_cnt < n) {
+  while (cur_cnt < n) {
     Ti *= 0.99;
     vector<int> newSpots = spots;
     swap(newSpots[distr(generator)], newSpots[distr(generator)]);

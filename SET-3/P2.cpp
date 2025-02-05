@@ -32,7 +32,6 @@ void solve() {
     cout << el << ' ';
   }
 
-
 }
 
 int main() {

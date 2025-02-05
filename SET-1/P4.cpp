@@ -10,26 +10,25 @@ int main() {
   vector<int> mas;
   cin >> n;
 
-  for (int i = 0; i < n; ++i){
+  for (int i = 0; i < n; ++i) {
     int x;
     cin >> x;
     mas.push_back(x);
     if (x == last_num) {
       k = 0;
-      vec.push_back({ 1, (i - last_n) + 1 });
-      while ((last_num != n + 1) && (mas.back() == last_num)){
+      vec.push_back({1, (i - last_n) + 1});
+      while ((last_num != n + 1) && (mas.back() == last_num)) {
         mas.pop_back();
         ++last_num;
         ++k;
       }
       last_n = i + 1;
-      vec.push_back({ 2, k });
+      vec.push_back({2, k});
     }
   }
-  if (last_num != n + 1){
+  if (last_num != n + 1) {
     cout << 0 << endl;
-  }
-  else{
+  } else {
     for (auto el : vec) {
       cout << el.first << ' ' << el.second << "\n";
     }

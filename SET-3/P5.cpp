@@ -32,7 +32,7 @@ void str_to_matrix(vector<vector<int>> &a, int n) {
 vector<int> create_random_vector(int n) {
   random_device rand_dev;
   mt19937 generator(rand_dev());
-  uniform_int_distribution<> distr(0,1);
+  uniform_int_distribution<> distr(0, 1);
   vector<int> vec(n);
   for (int i = 0; i < n; ++i) {
     vec[i] = distr(generator);
@@ -40,7 +40,7 @@ vector<int> create_random_vector(int n) {
   return vec;
 }
 
-vector<int> special_mul(vector<vector<int>> &mat, vector<int> &r){
+vector<int> special_mul(vector<vector<int>> &mat, vector<int> &r) {
   int n = r.size();
   vector<int> ans(n);
   for (int i = 0; i < n; ++i) {

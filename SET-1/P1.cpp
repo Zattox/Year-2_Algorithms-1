@@ -8,11 +8,11 @@ List::List() {
   tail = nullptr;
 }
 
-List::List(const List& other) {
+List::List(const List &other) {
   _size = other._size;
   head = new Node(other.head->value);
-  Node* cur = other.head->next;
-  Node* prev = head;
+  Node *cur = other.head->next;
+  Node *prev = head;
   tail = head;
   while (cur != nullptr) {
     tail = new Node(cur->value);
@@ -26,9 +26,9 @@ List::List(const List& other) {
 List::List(std::vector<int> array) {
   _size = array.size();
   head = new Node(array[0]);
-  Node* prev = head;
-  for (int i = 1; i < (int)_size; ++i) {
-    Node* cur = new Node(array[i]);
+  Node *prev = head;
+  for (int i = 1; i < (int) _size; ++i) {
+    Node *cur = new Node(array[i]);
     cur->prev = prev;
     prev->next = cur;
     prev = cur;
@@ -46,13 +46,12 @@ int List::front() {
   return head->value;
 }
 
-
 int List::back() {
   return tail->value;
 }
 
 void List::push_back(int value) {
-  Node* ptr = new Node(value);
+  Node *ptr = new Node(value);
   if (tail == nullptr) {
     head = ptr;
     tail = ptr;
@@ -65,7 +64,7 @@ void List::push_back(int value) {
 }
 
 void List::push_front(int value) {
-  Node* ptr = new Node(value);
+  Node *ptr = new Node(value);
   if (head == nullptr) {
     head = ptr;
     tail = ptr;
@@ -77,7 +76,7 @@ void List::push_front(int value) {
   ++_size;
 }
 
-void List::insert(Node* pos, int value) {
+void List::insert(Node *pos, int value) {
   if (pos == nullptr) {
     throw std::runtime_error("Incorrect position!");
   }
@@ -89,7 +88,7 @@ void List::insert(Node* pos, int value) {
     ++i;
   }
 
-  Node* ptr = new Node(value);
+  Node *ptr = new Node(value);
   if (cur->next == nullptr) {
     cur->next = ptr;
     ptr->prev = cur;
@@ -108,7 +107,7 @@ void List::pop_front() {
     return;
   }
 
-  Node* ptr = head->next;
+  Node *ptr = head->next;
   if (ptr != nullptr) {
     ptr->prev = nullptr;
   } else {
@@ -125,7 +124,7 @@ void List::pop_back() {
     return;
   }
 
-  Node* ptr = tail->prev;
+  Node *ptr = tail->prev;
   if (ptr != nullptr) {
     ptr->next = nullptr;
   } else {
@@ -137,7 +136,7 @@ void List::pop_back() {
   --_size;
 }
 
-void List::erase(Node* pos) {
+void List::erase(Node *pos) {
   if (pos == nullptr) {
     throw std::runtime_error("Incorrect position!");
   }
@@ -170,8 +169,8 @@ void List::reverse() {
   }
   std::swap(head, tail);
 
-  Node* prev = nullptr;
-  Node* cur = tail;
+  Node *prev = nullptr;
+  Node *cur = tail;
   while (cur != nullptr) {
     prev = cur->prev;
     cur->prev = cur->next;
@@ -183,9 +182,9 @@ void List::reverse() {
 
 void List::remove_duplicates() {
   std::unordered_set<int> st;
-  Node* cur = head;
+  Node *cur = head;
   while (cur != nullptr) {
-    if (st.find(cur->value) == st.end()){
+    if (st.find(cur->value) == st.end()) {
       st.insert(cur->value);
       cur = cur->next;
     } else {
@@ -195,7 +194,7 @@ void List::remove_duplicates() {
       if (cur->next != nullptr) {
         cur->next->prev = cur->prev;
       }
-      Node* tmp = cur;
+      Node *tmp = cur;
       if (tmp == tail) {
         tail = cur->prev;
       }
@@ -216,8 +215,8 @@ void List::replace(int old_value, int new_value) {
   }
 }
 
-void List::merge(const List& other) {
-  Node* ptr_other = other.head;
+void List::merge(const List &other) {
+  Node *ptr_other = other.head;
   while (ptr_other != nullptr) {
     push_back(ptr_other->value);
     ptr_other = ptr_other->next;
@@ -225,9 +224,9 @@ void List::merge(const List& other) {
 }
 
 bool List::check_cycle() const {
-  std::unordered_set<Node*> st;
+  std::unordered_set<Node *> st;
 
-  Node* cur = head;
+  Node *cur = head;
   while (cur != nullptr) {
     if (st.find(cur) != st.end()) {
       st.clear();
@@ -247,12 +246,12 @@ bool List::empty() const {
   return (_size == 0);
 }
 
-void List::copy(const List& other) {
+void List::copy(const List &other) {
   clear();
   _size = other._size;
   head = new Node(other.head->value);
-  Node* cur = other.head->next;
-  Node* prev = head;
+  Node *cur = other.head->next;
+  Node *prev = head;
   tail = head;
   while (cur != nullptr) {
     tail = new Node(cur->value);

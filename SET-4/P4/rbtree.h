@@ -6,40 +6,40 @@
 enum class Color { RED, BLACK };
 
 struct Node {
-    int key;
-    int height;
-    int size;
-    Node* left;
-    Node* right;
-    Node* parent;
-    Color color;
+  int key;
+  int height;
+  int size;
+  Node *left;
+  Node *right;
+  Node *parent;
+  Color color;
 
-    explicit Node(int key);
+  explicit Node(int key);
 };
 
 class RBTree {
-public:
-    RBTree();
+ public:
+  RBTree();
 
-    RBTree(std::initializer_list<int> list);
+  RBTree(std::initializer_list<int> list);
 
-    ~RBTree();
+  ~RBTree();
 
-    void insert(int key);
+  void insert(int key);
 
-    int* find(int key);
+  int *find(int key);
 
-    int size() const;
+  int size() const;
 
-    int* lowerBound(int key);
+  int *lowerBound(int key);
 
-    bool empty() const;
+  bool empty() const;
 
-    void erase(int key);
+  void erase(int key);
 
-    int height() const;
+  int height() const;
 
-    Node* root = nullptr;
+  Node *root = nullptr;
 
 };
 

@@ -4,7 +4,7 @@ using namespace std;
 
 int find_score(vector<int> &a, vector<int> &b) {
   int score = 0;
-  for (int i = 0; i < (int)a.size(); ++i) {
+  for (int i = 0; i < (int) a.size(); ++i) {
     if (a[i] != b[i]) {
       ++score;
     }

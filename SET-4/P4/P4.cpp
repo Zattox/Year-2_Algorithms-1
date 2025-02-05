@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cassert>
 
-void inOrderTraversal(Node* node, std::vector<int>& values) {
+void inOrderTraversal(Node *node, std::vector<int> &values) {
   if (node) {
     inOrderTraversal(node->left, values);
     values.push_back(node->key);
@@ -12,13 +12,13 @@ void inOrderTraversal(Node* node, std::vector<int>& values) {
   }
 }
 
-bool isBST(Node* node, int minVal, int maxVal) {
+bool isBST(Node *node, int minVal, int maxVal) {
   if (!node) return true;
   if (node->key < minVal || node->key > maxVal) return false;
   return isBST(node->left, minVal, node->key) && isBST(node->right, node->key, maxVal);
 }
 
-bool isRedBlackTree(Node* node, int& blackCount, int currentBlackCount = 0) {
+bool isRedBlackTree(Node *node, int &blackCount, int currentBlackCount = 0) {
   if (!node) {
     if (blackCount == -1) {
       blackCount = currentBlackCount;
@@ -73,25 +73,24 @@ void test1() {
   std::cout << "Test 1 passed!" << std::endl;
 }
 
-void printHelper(Node* root, std::string indent, bool last) {
+void printHelper(Node *root, std::string indent, bool last) {
   if (root != nullptr) {
     std::cout << indent;
     if (last) {
       std::cout << "R----";
       indent += "   ";
-    }
-    else {
+    } else {
       std::cout << "L----";
       indent += "|  ";
     }
     std::string sColor = (root->color == Color::RED) ? "RED" : "BLACK";
-    std::cout << root->key << " (" << &root->key  << ")" << std::endl;
+    std::cout << root->key << " (" << &root->key << ")" << std::endl;
     printHelper(root->left, indent, false);
     printHelper(root->right, indent, true);
   }
 }
 
-void printTree(Node* root){
+void printTree(Node *root) {
   if (root == nullptr)
     std::cout << "Tree is empty." << std::endl;
   else {

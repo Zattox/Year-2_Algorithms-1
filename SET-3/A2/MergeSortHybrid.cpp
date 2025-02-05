@@ -7,7 +7,7 @@ void insertionSort(vector<int> &arr, int l, int r) {
     int elem = arr[i];
     int j = i - 1;
     while (j >= l && arr[j] > elem) {
-      arr[j + 1] =  arr[j];
+      arr[j + 1] = arr[j];
       j = j - 1;
     }
     arr[j + 1] = elem;
@@ -33,10 +33,10 @@ void merge(vector<int> &arr, int l, int m, int r) {
     }
   }
 
-  while(i < sz_l) {
+  while (i < sz_l) {
     arr[cur++] = half_l[i++];
   }
-  while(j < sz_r) {
+  while (j < sz_r) {
     arr[cur++] = half_r[j++];
   }
 }
