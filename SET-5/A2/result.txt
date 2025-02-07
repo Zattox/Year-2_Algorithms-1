@@ -1,0 +1,257 @@
+Test, where M is pow of 2
+M = 128:
+Quadratic:
+Collisions = 389
+Average steps = 3.04
+Cubic:
+Collisions = 469
+Average steps = 3.66
+
+M = 256:
+Quadratic:
+Collisions = 1431
+Average steps = 5.59
+Cubic:
+Collisions = 982
+Average steps = 3.84
+
+M = 512:
+Quadratic:
+Collisions = 2883
+Average steps = 5.63
+Cubic:
+Collisions = 2424
+Average steps = 4.73
+
+M = 1024:
+Quadratic:
+Collisions = 5985
+Average steps = 5.84
+Cubic:
+Collisions = 5817
+Average steps = 5.68
+
+M = 2048:
+Quadratic:
+Collisions = 14342
+Average steps = 7
+Cubic:
+Collisions = 13677
+Average steps = 6.68
+
+M = 4196:
+Quadratic:
+Collisions = 31791
+Average steps = 7.58
+Cubic:
+Collisions = 28536
+Average steps = 6.8
+=========END TEST GROUP=========
+
+Test, where M is pow of 3
+M = 9:
+Quadratic:
+Collisions = 6
+Average steps = 0.667
+Cubic:
+Collisions = 8
+Average steps = 0.889
+
+M = 27:
+Quadratic:
+Collisions = 57
+Average steps = 2.11
+Cubic:
+Collisions = 41
+Average steps = 1.52
+
+M = 243:
+Quadratic:
+Collisions = 967
+Average steps = 3.98
+Cubic:
+Collisions = 915
+Average steps = 3.77
+
+M = 2187:
+Quadratic:
+Collisions = 14943
+Average steps = 6.83
+Cubic:
+Collisions = 16926
+Average steps = 7.74
+
+M = 651:
+Quadratic:
+Collisions = 3362
+Average steps = 5.16
+Cubic:
+Collisions = 3993
+Average steps = 6.13
+=========END TEST GROUP=========
+
+Test, where M is pow of 10
+M = 10:
+Quadratic:
+Collisions = 9
+Average steps = 0.9
+Cubic:
+Collisions = 9
+Average steps = 0.9
+
+M = 100:
+Quadratic:
+Collisions = 274
+Average steps = 2.74
+Cubic:
+Collisions = 339
+Average steps = 3.39
+
+M = 1000:
+Quadratic:
+Collisions = 7376
+Average steps = 7.38
+Cubic:
+Collisions = 5517
+Average steps = 5.52
+
+M = 10000:
+Quadratic:
+Collisions = 97362
+Average steps = 9.74
+Cubic:
+Collisions = 73315
+Average steps = 7.33
+
+M = 100000:
+Quadratic:
+Collisions = 1120774
+Average steps = 11.2
+Cubic:
+Collisions = 1107378
+Average steps = 11.1
+=========END TEST GROUP=========
+
+Test, where M is prime number
+M = 11:
+Quadratic:
+Collisions = 12
+Average steps = 1.09
+Cubic:
+Collisions = 10
+Average steps = 0.909
+
+M = 101:
+Quadratic:
+Collisions = 318
+Average steps = 3.15
+Cubic:
+Collisions = 355
+Average steps = 3.51
+
+M = 547:
+Quadratic:
+Collisions = 2169
+Average steps = 3.97
+Cubic:
+Collisions = 3307
+Average steps = 6.05
+
+M = 1051:
+Quadratic:
+Collisions = 6339
+Average steps = 6.03
+Cubic:
+Collisions = 5213
+Average steps = 4.96
+
+M = 5059:
+Quadratic:
+Collisions = 31972
+Average steps = 6.32
+Cubic:
+Collisions = 39049
+Average steps = 7.72
+
+M = 10007:
+Quadratic:
+Collisions = 80338
+Average steps = 8.03
+Cubic:
+Collisions = 80626
+Average steps = 8.06
+
+M = 51971:
+Quadratic:
+Collisions = 527953
+Average steps = 10.2
+Cubic:
+Collisions = 529376
+Average steps = 10.2
+
+M = 99347:
+Quadratic:
+Collisions = 1116271
+Average steps = 11.2
+Cubic:
+Collisions = 1003818
+Average steps = 10.1
+=========END TEST GROUP=========
+
+Test, where M is random number
+M = 148792:
+Quadratic:
+Collisions = 3257429
+Average steps = 21.9
+Cubic:
+Collisions = 1802625
+Average steps = 12.1
+
+M = 235070:
+Quadratic:
+Collisions = 6721809
+Average steps = 28.6
+Cubic:
+Collisions = 3362727
+Average steps = 14.3
+
+M = 253808:
+Quadratic:
+Collisions = 4579086
+Average steps = 18
+Cubic:
+Collisions = 3131315
+Average steps = 12.3
+
+M = 325847:
+Quadratic:
+Collisions = 7148381
+Average steps = 21.9
+Cubic:
+Collisions = 4147955
+Average steps = 12.7
+
+M = 598269:
+Quadratic:
+Collisions = 51597054
+Average steps = 86.2
+Cubic:
+Collisions = 13558499
+Average steps = 22.7
+
+M = 885253:
+Quadratic:
+Collisions = 82858134
+Average steps = 93.6
+Cubic:
+Collisions = 20335808
+Average steps = 23
+
+M = 909071:
+Quadratic:
+Collisions = 72268332
+Average steps = 79.5
+Cubic:
+Collisions = 17952771
+Average steps = 19.7
+=========END TEST GROUP=========
