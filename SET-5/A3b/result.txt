@@ -1,0 +1,62 @@
+p = 1
+The neutral elems: fZ gY hX iW jV kU lT mS nR oQ pP qO rN sM tL uK vJ wI xH yG zF Fz Gy Hx Iw Jv Ku Lt Ms Nr Oq Pp Qo Rn Sm Tl Uk Vj Wi Xh Yg Zf 
+p = 2
+The neutral elems: lZ nY pX rW tV vU xT zS Bo Dn Fm Hl Jk Lj Ni Ph Rg Tf Ve Xd Zc 0x 2w 4v 6u 8t 
+p = 3
+The neutral elems: rZ uY xX Bj Ei Hh Kg Nf Qe Td Wc Zb 0p 3o 6n 9m 
+p = 4
+The neutral elems: xZ Dg Hf Le Pd Tc Xb 0l 4k 8j 
+p = 5
+The neutral elems: Bf Ge Ld Qc Vb 3i 8h 
+p = 6
+The neutral elems: Be Hd Nc Tb Za 0h 6g 
+p = 7
+The neutral elems: Dd Kc Rb Ya 6f 
+p = 8
+The neutral elems: Hc Pb Xa 0f 8e 
+p = 9
+The neutral elems: Ec Nb Wa 3e 
+p = 10
+The neutral elems: Bc Lb Va 8d 
+p = 11
+The neutral elems: Jb Ua 4d 
+p = 12
+The neutral elems: Hb Ta 0d 
+p = 13
+The neutral elems: Fb Sa 9c 
+p = 14
+The neutral elems: Db Ra 6c 
+p = 15
+The neutral elems: Bb Qa 3c 
+p = 16
+The neutral elems: Pa 0c 
+p = 17
+The neutral elems: Oa 
+p = 18
+The neutral elems: Na 
+p = 19
+The neutral elems: Ma 
+p = 20
+The neutral elems: La 8b 
+p = 21
+The neutral elems: Ka 6b 
+p = 22
+The neutral elems: Ja 4b 
+p = 23
+The neutral elems: Ia 2b 
+p = 24
+The neutral elems: Ha 0b 
+p = 25
+The neutral elems: Ga 
+p = 26
+The neutral elems: Fa 
+p = 27
+The neutral elems: Ea 
+p = 28
+The neutral elems: Da 
+p = 29
+The neutral elems: Ca 
+p = 30
+The neutral elems: Ba 
+p = 31
+The neutral elems: Aa 
