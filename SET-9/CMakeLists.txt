@@ -4,7 +4,7 @@ project(SET_9)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(main main.cpp)
-add_executable(test test.cpp)
+add_executable(test A1/test.cpp)
 add_executable(A1m A1/A1m.cpp)
 add_executable(A1q A1/A1q.cpp)
 add_executable(A1r A1/A1r.cpp)
