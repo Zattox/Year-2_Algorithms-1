@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.29)
+project(SET_10)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(main main.cpp)
+add_executable(P01 P01.cpp)
+add_executable(P02 P02.cpp)
+add_executable(P03 P03.cpp)
+add_executable(P04 P04.cpp)
+add_executable(P05 P05.cpp)
+add_executable(P06 P06.cpp)
+add_executable(P07 P07.cpp)
+add_executable(P08 P08.cpp)
+add_executable(P09b P09b.cpp)
+add_executable(P10b P10b.cpp)
+add_executable(P11 P11.cpp)
