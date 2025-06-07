@@ -1,28 +1,35 @@
 #include <bits/stdc++.h>
 
+typedef long double ld;
+
 using namespace std;
 using namespace chrono;
 
 struct Item {
   int value;
-  double weight;
+  ld weight;
   int index;
-  double ratio;
+  ld ratio;
 };
 
 struct Node {
   int level;
   int value;
-  double weight;
-  double bound;
+  ld weight;
+  ld bound;
   vector<bool> taken;
 };
 
-double calculate_bound(const Node &node, int n, const vector<Item> &items, double capacity) {
+struct Result {
+  int max_value;
+  long long time_microseconds;
+};
+
+ld calculate_bound(const Node &node, int n, const vector<Item> &items, ld capacity) {
   if (node.weight >= capacity) return 0;
 
-  double bound = node.value;
-  double weight = node.weight;
+  ld bound = node.value;
+  ld weight = node.weight;
   int level = node.level;
 
   while (level < n && weight + items[level].weight <= capacity) {
@@ -38,17 +45,20 @@ double calculate_bound(const Node &node, int n, const vector<Item> &items, doubl
   return bound;
 }
 
-void branch_boundary_method(int n, const vector<int> &c, const vector<double> &w, double capacity = 100.0) {
+Result branch_boundary_method(int n, const vector<int> &c, const vector<ld> &w, ld capacity) {
+  auto start = high_resolution_clock::now();
+
   vector<Item> items(n);
   for (int i = 0; i < n; i++) {
-    items[i] = {c[i], w[i], i, (double) c[i] / w[i]};
+    items[i] = {c[i], w[i], i, (ld) c[i] / w[i]};
   }
 
   sort(items.begin(), items.end(), [](const Item &a, const Item &b) {
     return a.ratio > b.ratio;
   });
 
-  priority_queue<Node, vector<Node>, function<bool(const Node &, const Node &)>> pq(
+  priority_queue<Node, vector<Node>, function<bool(
+      const Node &, const Node &)>> pq(
       [](const Node &a, const Node &b) { return a.bound < b.bound; }
   );
 
@@ -57,18 +67,18 @@ void branch_boundary_method(int n, const vector<int> &c, const vector<double> &w
   pq.push(root);
 
   int max_value = 0;
-  vector<bool> best_solution(n, false);
 
   while (!pq.empty()) {
     Node current = pq.top();
     pq.pop();
 
-    if (current.bound <= max_value) continue;
+    if (current.bound <= max_value) {
+      continue;
+    }
 
     if (current.level == n) {
       if (current.value > max_value) {
         max_value = current.value;
-        best_solution = current.taken;
       }
       continue;
     }
@@ -94,9 +104,16 @@ void branch_boundary_method(int n, const vector<int> &c, const vector<double> &w
       pq.push(without_item);
     }
   }
+
+  auto end = high_resolution_clock::now();
+  auto time_taken = duration_cast<microseconds>(end - start);
+
+  return {max_value, time_taken.count()};
 }
 
-void standard_method(int n, const vector<int> &c, const vector<double> &w, double capacity = 100.0) {
+Result standard_method(int n, const vector<int> &c, const vector<ld> &w, ld capacity) {
+  auto start = high_resolution_clock::now();
+
   vector<int> int_weights(n);
   int int_capacity = (int) (capacity * 100);
 
@@ -107,7 +124,7 @@ void standard_method(int n, const vector<int> &c, const vector<double> &w, doubl
   vector<vector<int>> dp(n + 1, vector<int>(int_capacity + 1, 0));
 
   for (int i = 1; i <= n; i++) {
-    for (int weight = 0; weight <= int_capacity; weight++) {
+    for (int weight = 1; weight <= int_capacity; weight++) {
       dp[i][weight] = dp[i - 1][weight];
 
       if (weight >= int_weights[i - 1]) {
@@ -115,61 +132,82 @@ void standard_method(int n, const vector<int> &c, const vector<double> &w, doubl
       }
     }
   }
+
+  auto end = high_resolution_clock::now();
+  auto time_taken = duration_cast<microseconds>(end - start);
+
+  return {dp[n][int_capacity], time_taken.count()};
 }
 
-void gen_test(int &n, vector<int> &c, vector<double> &w) {
+void gen_test(int n, vector<int> &c, vector<ld> &w, ld &capacity) {
   random_device rd;
   mt19937_64 engine(rd());
-  uniform_real_distribution<double> weight_dist(0.1, 10.0);
+  uniform_int_distribution<int> weight_int_dist(100, 1000);
   uniform_int_distribution<int> value_dist(1, 200);
+  uniform_int_distribution<int> capacity_int_dist(1000, 20000);
 
   c.resize(n);
   w.resize(n);
+
   for (int i = 0; i < n; ++i) {
     c[i] = value_dist(engine);
-    w[i] = weight_dist(engine);
+    w[i] = weight_int_dist(engine) / 100.0;
   }
+
+  capacity = capacity_int_dist(engine) / 100.0;
 }
 
 int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
-
-  cout << "=== Performance Research ===" << endl;
-  cout << "n\tBranch & Bound\tStandard Method\tRatio" << endl;
+  cout << "=== Knapsack Problem Performance Research ===" << endl;
+  cout << "n\tCapacity\tBranch&Bound(μs)\tStandard(μs)\tRatio" << endl;
+  cout << string(70, '-') << endl;
 
   vector<int> arr_n;
   for (int i = 10; i <= 100; i += 10) {
     arr_n.push_back(i);
   }
-  for (int i = 200; i <= 2000; i += 100) {
+  for (int i = 200; i <= 1000; i += 100) {
     arr_n.push_back(i);
   }
-  for (int i = 3000; i <= 10000; i += 1000) {
+  for (int i = 2000; i <= 10000; i += 1000) {
     arr_n.push_back(i);
   }
+
+  int total_tests = 0;
 
   for (auto n : arr_n) {
     vector<int> c;
-    vector<double> w;
-    gen_test(n, c, w);
+    vector<ld> w;
+    ld capacity;
 
-    auto start = high_resolution_clock::now();
-    branch_boundary_method(n, c, w);
-    auto end = high_resolution_clock::now();
-    auto time_branch = duration_cast<microseconds>(end - start);
+    gen_test(n, c, w, capacity);
+    total_tests++;
 
-    start = high_resolution_clock::now();
-    standard_method(n, c, w);
-    end = high_resolution_clock::now();
-    auto time_standard = duration_cast<microseconds>(end - start);
+    Result result_branch = branch_boundary_method(n, c, w, capacity);
+    Result result_standard = standard_method(n, c, w, capacity);
 
-    double ratio = (double) time_branch.count() / (double) time_standard.count();
+    bool values_match = (result_branch.max_value == result_standard.max_value);
 
-    cout << n << "\t" << time_branch.count() << "\t\t\t"
-         << time_standard.count() << "\t\t\t"
-         << fixed << setprecision(2) << ratio << endl;
+    if (!values_match) {
+      cout << "\nERROR: Results mismatch for n=" << n << endl;
+      cout << "Branch & Bound: " << result_branch.max_value << endl;
+      cout << "Standard DP: " << result_standard.max_value << endl;
+      cout << "Capacity: " << fixed << setprecision(2) << capacity << endl;
+      cout << "Testing stopped!" << endl;
+      return 1;
+    }
+
+    ld ratio = (result_branch.time_microseconds > 0) ?
+               (ld) result_standard.time_microseconds / (ld) result_branch.time_microseconds : 0.0;
+
+    cout << n << "\t" << fixed << setprecision(1) << capacity << "\t\t"
+         << result_branch.time_microseconds << "\t\t\t"
+         << result_standard.time_microseconds << "\t\t"
+         << setprecision(2) << ratio << endl;
   }
+
+  cout << string(70, '-') << endl;
+  cout << "All " << total_tests << " tests passed!" << endl;
 
   return 0;
 }
